@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
+﻿using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace WinFormsApp1
 {
-    internal class EmployeeService
+    internal class PackageService
     {
         static HttpClient client = new HttpClient();
 
@@ -21,19 +16,25 @@ namespace WinFormsApp1
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public List<Employee> GetEmployees()
+        public List<Package> GetPackages()
         {
-            List<Employee> employees = null;
-            HttpResponseMessage response = client.GetAsync("employee").Result;
+            List<Package> packages = null;
+            HttpResponseMessage response = client.GetAsync("package").Result;
             if (response.IsSuccessStatusCode)
             {
                 string resultString = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine("gata : " + resultString);
-                employees = JsonSerializer.Deserialize<List<Employee>>(resultString);
-                return employees;
+                Console.WriteLine("received : " + resultString);
+                packages = JsonSerializer.Deserialize<List<Package>>(resultString);
+                return packages;
 
             }
             return null;
+        }
+
+        public List<Courier> GetBusyCouriers()
+        {
+            List<Package> packages = this.GetPackages();
+            return packages.Select(p => p.courier).DistinctBy(c => c.name).ToList();
         }
     }
 }

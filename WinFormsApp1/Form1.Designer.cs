@@ -48,7 +48,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "employees";
+            this.label1.Text = "busy couriers";
             // 
             // button1
             // 
@@ -56,7 +56,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(184, 29);
             this.button1.TabIndex = 2;
-            this.button1.Text = "load Employees";
+            this.button1.Text = "load";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -69,7 +69,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Package tracking";
             this.ResumeLayout(false);
             this.PerformLayout();
 

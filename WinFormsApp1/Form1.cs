@@ -2,21 +2,21 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        EmployeeService employeeService;
-        List<Employee> employeeList;
+        PackageService packageService;
+        List<Package> packageList;
         public Form1()
         {
             InitializeComponent();
-            employeeService = new EmployeeService();
-            employeeService.createConnection();
+            packageService = new PackageService();
+            packageService.createConnection();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var employeeList = employeeService.GetEmployees();
+            var couriersList = packageService.GetBusyCouriers();
 
-            comboBox1.DataSource= employeeList;
+            comboBox1.DataSource= couriersList;
             comboBox1.DisplayMember= "name";
         }
     }
